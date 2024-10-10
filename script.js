@@ -1,6 +1,7 @@
 //Write all the variables and such here and outside functions, unless the variable has a niche use, so they can be used globally.
 let table = document.querySelector("#item_list")
 let s_btn = document.querySelector("#submit_button")
+let price_div = document.querySelector("#price_sum")
 
 //The purpose of this function will be to take the input data from inputs "item_name" and "item_price", create a new row in the "item_list" -table and apply the values of said variables into appropriate cells.
 
@@ -9,12 +10,8 @@ function submit_validation(){
     let i_name = document.querySelector("#item_name").value;
     let i_price = document.querySelector("#item_price").value;
 
-    if (i_name === ""){
-        alert("Please enter an Item Name!")
-        return;
-    }
-    if (i_price === "" || isNaN(i_price)){
-        alert("A price should be declared in valid numerical values!")
+    if (i_name === "" || i_price === "" || isNaN(i_price) ){
+        alert("Please enter a valid iten name and price.")
         return;
     }
 
@@ -33,11 +30,14 @@ function insertItem(i_name, i_price){
     cell1.innerHTML = i_name;
     cell2.innerHTML = i_price;
 
+    priceSum();
+
     let delBtn = document.createElement("button");
     delBtn.type = "button";
     delBtn.innerHTML = "Delete";
     delBtn.addEventListener("click", function(){
         table.deleteRow(row.rowIndex);
+        priceSum();
     });
 
     let toggleBtn = document.createElement("input");
@@ -60,6 +60,24 @@ function insertItem(i_name, i_price){
     document.querySelector("#item_price").value="";
 }   
  
+// This function calculates the total prices of all items in the table.
+function priceSum(){
+    let total = 0;
+
+    const rows = table.querySelectorAll("tr");
+    rows.forEach(row => {
+        const priceCell = row.cells[1];
+        if (priceCell) {
+            const price = parseFloat(priceCell.textContent);
+            if (!isNaN(price)) {
+                total += price;
+            }
+        }
+    });
+
+    price_div.textContent = total.toFixed(2) + " p";
+
+};
 
 
 s_btn.addEventListener("click", submit_validation);
