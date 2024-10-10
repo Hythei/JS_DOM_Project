@@ -2,6 +2,7 @@
 let table = document.querySelector("#item_list")
 let s_btn = document.querySelector("#submit_button")
 let price_div = document.querySelector("#price_sum")
+let item_div = document.querySelector("#item_sum")
 
 //The purpose of this function will be to take the input data from inputs "item_name" and "item_price", create a new row in the "item_list" -table and apply the values of said variables into appropriate cells.
 
@@ -16,6 +17,7 @@ function submit_validation(){
     }
 
     insertItem(i_name, i_price);
+    itemSum();
 }
 
 
@@ -38,6 +40,7 @@ function insertItem(i_name, i_price){
     delBtn.addEventListener("click", function(){
         table.deleteRow(row.rowIndex);
         priceSum();
+        itemSum();
     });
 
     let toggleBtn = document.createElement("input");
@@ -77,6 +80,23 @@ function priceSum(){
 
     price_div.textContent = total + " p";
 
+};
+
+function itemSum(){
+    let i_total = 0;
+    const rows = table.querySelectorAll("tr")
+    
+    rows.forEach((row, index) =>{
+        if (index > 0){
+            const itemCell = row.cells[0];
+            if (itemCell) {
+                i_total++;
+            }
+        }
+
+    });
+
+    item_div.textContent = i_total
 };
 
 
