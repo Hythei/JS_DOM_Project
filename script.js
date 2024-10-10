@@ -75,7 +75,7 @@ function priceSum(){
         }
     });
 
-    price_div.textContent = total.toFixed(2) + " p";
+    price_div.textContent = total + " p";
 
 };
 
