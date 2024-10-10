@@ -3,6 +3,7 @@ let table = document.querySelector("#item_list")
 let s_btn = document.querySelector("#submit_button")
 let price_div = document.querySelector("#price_sum")
 let item_div = document.querySelector("#item_sum")
+let rem_item_div = document.querySelector("#remaining_items")
 
 //The purpose of this function will be to take the input data from inputs "item_name" and "item_price", create a new row in the "item_list" -table and apply the values of said variables into appropriate cells.
 
@@ -18,6 +19,7 @@ function submit_validation(){
 
     insertItem(i_name, i_price);
     itemSum();
+    
 }
 
 
@@ -33,6 +35,7 @@ function insertItem(i_name, i_price){
     cell2.innerHTML = i_price;
 
     priceSum();
+    updateRemainingItems();
 
     let delBtn = document.createElement("button");
     delBtn.type = "button";
@@ -41,6 +44,7 @@ function insertItem(i_name, i_price){
         table.deleteRow(row.rowIndex);
         priceSum();
         itemSum();
+        updateRemainingItems();
     });
 
     let toggleBtn = document.createElement("input");
@@ -54,6 +58,7 @@ function insertItem(i_name, i_price){
             cell1.style.textDecoration = "none"
             cell2.style.textDecoration = "none"
         }
+        updateRemainingItems();
     });
 
 
@@ -97,7 +102,29 @@ function itemSum(){
     });
 
     item_div.textContent = i_total
+    return i_total;
 };
+
+function remItems(){
+    let toggled = 0;
+    const rows = table.querySelectorAll("tr")
+
+    rows.forEach(row => {
+        const checkbox = row.querySelector("input[type='checkbox']");
+
+        if (checkbox && checkbox.checked) {
+            toggled += 1;
+        }
+    });
+
+    return toggled;
+
+}
+
+function updateRemainingItems(){
+    const toggled = remItems();
+    rem_item_div.textContent = itemSum() - toggled;
+}
 
 
 s_btn.addEventListener("click", submit_validation);
