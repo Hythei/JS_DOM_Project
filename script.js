@@ -174,6 +174,7 @@ function deleteAllItems() {
     localStorage.removeItem("tableData");
 
     updateRemainingItems();
+    priceSum();
 }
 
 s_btn.addEventListener("click", function(){
