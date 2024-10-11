@@ -25,7 +25,7 @@ Acquisiton & Price List is a simple app and project
 
 ## Screenshots
 Add here atleast one screenshot of the working application 
-`![The App](App_Screenshot.png)`
+![The App](App_Screenshot.png)
 
 ## Technologies
 I used the following technologies
