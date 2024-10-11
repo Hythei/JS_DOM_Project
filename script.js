@@ -5,6 +5,10 @@ let price_div = document.querySelector("#price_sum")
 let item_div = document.querySelector("#item_sum")
 let rem_item_div = document.querySelector("#remaining_items")
 
+document.addEventListener("DOMContentLoaded", function(){
+    TableFromLocalStorage();
+});
+
 //The purpose of this function will be to take the input data from inputs "item_name" and "item_price", create a new row in the "item_list" -table and apply the values of said variables into appropriate cells.
 
 //Write an expanded function that checks if the fields have values; name field must have something, price field must have something, error and cannot submit if not found. Validation and all that.
@@ -35,6 +39,7 @@ function insertItem(i_name, i_price){
     cell2.innerHTML = i_price;
 
     priceSum();
+    itemSum();
     updateRemainingItems();
 
     let delBtn = document.createElement("button");
@@ -45,6 +50,7 @@ function insertItem(i_name, i_price){
         priceSum();
         itemSum();
         updateRemainingItems();
+        TableLocalStorage(); // Saves after deleting
     });
 
     let toggleBtn = document.createElement("input");
@@ -59,6 +65,7 @@ function insertItem(i_name, i_price){
             cell2.style.textDecoration = "none"
         }
         updateRemainingItems();
+        TableLocalStorage(); // Saves after toggling
     });
 
 
@@ -127,22 +134,57 @@ function updateRemainingItems(){
 }
 
 
-s_btn.addEventListener("click", submit_validation);
+// Turns the table rows into a JSON string. There's literally no other way to save this much information into local storage without using other libraries.
+function TableLocalStorage(){
+    const rows = table.querySelectorAll("tr");
+    const tableData = [];
+
+    rows.forEach((row, index) => {
+        if (index > 0) { //Skips the header row
+        const cells = row.querySelectorAll("td");
+        const rowData = {
+            name: cells[0].textContent,
+            price: cells[1].textContent,
+            checked: cells[3].querySelector("input[type='checkbox']").checked
+        };
+        tableData.push(rowData);    
+        }
+    });
+    localStorage.setItem("tableData", JSON.stringify(tableData));
+}
+
+function TableFromLocalStorage(){
+    const tableData = JSON.parse(localStorage.getItem("tableData"));
+
+    if (tableData) {
+            tableData.forEach(rowData => {
+                insertItem(rowData.name, rowData.price, rowData.checked);
+            });
+        }
+}   
+
+function deleteAllItems() {
+    const rows = table.querySelectorAll("tr");
+    rows.forEach((row, index) => {
+        if (index > 0) {
+            table.deleteRow(row.rowIndex);
+        }
+    });
+
+    localStorage.removeItem("tableData");
+
+    updateRemainingItems();
+}
+
+s_btn.addEventListener("click", function(){
+    submit_validation();
+    updateRemainingItems();
+    TableLocalStorage();
+}
+);
+
+document.getElementById("delete_all_btn").addEventListener("click", deleteAllItems);
 
 
-// TO DO
-// Write a summary div and function that calculates the sum of items and their prices
 
-// Write a function that enables the user to toggle an item (table row) when the item has been acquired.
-
-// Write a deletion feature for individual items and the entire list
-// function SomeDeleteRowFunction(o) {
-//     //no clue what to put here?
-//     var p=o.parentNode.parentNode;
-//         p.parentNode.removeChild(p);
-//    }
-
-// Validation for forms
-
-// Some CSS so it looks somewhat presentable
 

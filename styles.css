@@ -1,0 +1,146 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+
+div {
+    margin-bottom: 20px;
+}
+
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+
+#user_input {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#user_input input[type="text"],
+#user_input input[type="number"] {
+    padding: 8px;
+    margin: 10px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#submit_button {
+    padding: 8px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#submit_button:hover {
+    background-color: #218838;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f8f9fa;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+table button {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#summary {
+    margin-top: 30px;
+    text-align: center;
+    justify-content: center;
+}
+
+#summary p {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+#summary div {
+    margin-bottom: 10px;
+}
+
+#summary div div {
+    font-size: 16px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+    display: inline-block;
+    width: 120px;
+}
+
+
+#delete_all_btn {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#delete_all_btn:hover {
+    background-color: #c82333;
+}
+
+
+@media (max-width: 768px) {
+    #user_input input[type="text"],
+    #user_input input[type="number"] {
+        width: 90%;
+    }
+
+    table {
+        width: 100%;
+        font-size: 14px;
+    }
+}
