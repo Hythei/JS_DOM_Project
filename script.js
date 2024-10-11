@@ -26,7 +26,7 @@ function submit_validation(){
     
 }
 
-
+// this function will insert the item into the table, and also create the delete button and checkbox for the item.
 function insertItem(i_name, i_price){
 
     let row = table.insertRow();
@@ -45,14 +45,15 @@ function insertItem(i_name, i_price){
     let delBtn = document.createElement("button");
     delBtn.type = "button";
     delBtn.innerHTML = "Delete";
-    delBtn.addEventListener("click", function(){
+    delBtn.addEventListener("click", function(){ // This function deletes the row and updates the price sum and item sum.
         table.deleteRow(row.rowIndex);
-        priceSum();
-        itemSum();
-        updateRemainingItems();
+        priceSum(); // Updates the price sum after deleting
+        itemSum(); // Updates the item sum after deleting
+        updateRemainingItems(); // Updates the remaining items after deleting
         TableLocalStorage(); // Saves after deleting
     });
 
+    // This function toggles the line-through style for the item name and price.
     let toggleBtn = document.createElement("input");
     toggleBtn.type = "checkbox";
     toggleBtn.innerHTML = "";
@@ -94,6 +95,7 @@ function priceSum(){
 
 };
 
+// This function calculates the total amount of items in the table.
 function itemSum(){
     let i_total = 0;
     const rows = table.querySelectorAll("tr")
@@ -175,6 +177,7 @@ function deleteAllItems() {
 
     updateRemainingItems();
     priceSum();
+    updateRemainingItems();
 }
 
 s_btn.addEventListener("click", function(){
