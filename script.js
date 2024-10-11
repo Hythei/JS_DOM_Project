@@ -177,7 +177,6 @@ function deleteAllItems() {
 
     updateRemainingItems();
     priceSum();
-    updateRemainingItems();
 }
 
 s_btn.addEventListener("click", function(){
