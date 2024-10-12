@@ -2,10 +2,10 @@
 Title as above
 
 ## Demo link:
-Access my site at [here](https://animated-cocada-9b6beb.netlify.app/)
+Access the app [here](https://animated-cocada-9b6beb.netlify.app/)
 
 ## How was the workload divided
-I bore everything on my shoulder 
+I bore everything on my shoulders.
 
 
 
@@ -45,7 +45,7 @@ Write brief instructions on how to run and use your app. For example:
 
 ## Status
 Acquisition & Price List is... "finished" for the most part, although I may still return to it to finetune and refine certain aspects when I can and have the time. 
-Those aspects being things such as improving the CSS and seeing if I can make the code less "spaghetti" looking.
+Those aspects being things such as improving the CSS and seeing if I can make the code less "spaghetti" in apperance.
 
 ## Credits
 For this project I used the following sources.
@@ -54,7 +54,7 @@ For this project I used the following sources.
 - [Brocode](https://www.youtube.com/@BroCodez)
 - Past workshops
 - ChatGPT to acquiant myself with new technologies and methods (i.e. JSON and localStorage).
-- CoPilot to find Typos. Most of the project was done with auto-completion/suggestions disabled to encourage personal engagement and problem-solving, however, I did turn it on for the sake of documentation.
+- CoPilot to find Typos. Most of the project was done with auto-completion/suggestions disabled to encourage personal engagement and problem-solving, however, at the later stages of the project when all the functionalities had been implemented and proven working I came to the conclusion that turning it on would help with documentation.
 
 ## License
 Choose a license for your project by following this [guide](https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/adding-a-license-to-a-repository).

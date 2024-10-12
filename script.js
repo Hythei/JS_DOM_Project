@@ -5,13 +5,12 @@ let price_div = document.querySelector("#price_sum")
 let item_div = document.querySelector("#item_sum")
 let rem_item_div = document.querySelector("#remaining_items")
 
+// This event listener will call the TableFromLocalStorage function when the page is loaded, so the table will be populated with the data from the local storage.
 document.addEventListener("DOMContentLoaded", function(){
     TableFromLocalStorage();
 });
 
 //The purpose of this function will be to take the input data from inputs "item_name" and "item_price", create a new row in the "item_list" -table and apply the values of said variables into appropriate cells.
-
-//Write an expanded function that checks if the fields have values; name field must have something, price field must have something, error and cannot submit if not found. Validation and all that.
 function submit_validation(){
     let i_name = document.querySelector("#item_name").value;
     let i_price = document.querySelector("#item_price").value;
@@ -114,6 +113,7 @@ function itemSum(){
     return i_total;
 };
 
+// This function calculates the amount of items that are checked in the table.
 function remItems(){
     let toggled = 0;
     const rows = table.querySelectorAll("tr")
@@ -130,6 +130,7 @@ function remItems(){
 
 }
 
+// This function calculates the amount of items that are not checked in the table.
 function updateRemainingItems(){
     const toggled = remItems();
     rem_item_div.textContent = itemSum() - toggled;
@@ -165,6 +166,7 @@ function TableFromLocalStorage(){
         }
 }   
 
+// Per its name, this function will delete all items in the table and also remove the local storage data.
 function deleteAllItems() {
     const rows = table.querySelectorAll("tr");
     rows.forEach((row, index) => {
@@ -179,6 +181,7 @@ function deleteAllItems() {
     priceSum();
 }
 
+// The magic behind the submit button. It will call the submit_validation function and update the remaining items.
 s_btn.addEventListener("click", function(){
     submit_validation();
     updateRemainingItems();
