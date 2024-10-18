@@ -30,7 +30,7 @@ Add here atleast one screenshot of the working application
 ## Technologies
 I used the following technologies
 - HTML for webpage and divs and so on
-- CSS for a responsive and somewhat presentable 
+- CSS for a responsive and somewhat presentable appearance
 - JavaScript for the app's functionality
 
 ## Setup
