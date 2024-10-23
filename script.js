@@ -15,7 +15,7 @@ function submit_validation(){
     let i_name = document.querySelector("#item_name").value;
     let i_price = document.querySelector("#item_price").value;
 
-    if (i_name === "" || i_price === "" || isNaN(i_price) ){
+    if (i_name === "" || i_price === "" || isNaN(i_price) || i_price < 0 ){
         alert("Please enter a valid iten name and price.")
         return;
     }
